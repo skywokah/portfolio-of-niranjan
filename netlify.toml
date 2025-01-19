@@ -3,7 +3,7 @@
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "14.17.0" # Adjust this to your required Node version
+  NODE_VERSION = "16.0.0" # Update to a Node version that supports the ||= operator
   GO_VERSION = "1.19"
 
 [[redirects]]
