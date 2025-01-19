@@ -90,6 +90,16 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
+                href="https://drive.google.com/drive/folders/1lezY9tHTB46DBzAz4iw0dWedVwQmmEvq?usp=drive_link/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ImBlog style={{ marginBottom: "2px" }} /> Content Creations
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
                 as={Link}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
@@ -98,19 +108,11 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
-              <Nav.Link
-                href="https://soumyajitblogs.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ImBlog style={{ marginBottom: "2px" }} /> video works
-              </Nav.Link>
-            </Nav.Item>
+
 
             <Nav.Item className="fork-btn">
               <Button
-                href="https://github.com/soumyajit4419/Portfolio"
+                href="https://github.com/skywokah/portfolio-of-niranjan"
                 target="_blank"
                 className="fork-btn-inner"
               >
