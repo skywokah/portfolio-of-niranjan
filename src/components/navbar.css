@@ -1,0 +1,11 @@
+.d-flex {
+    flex-shrink: 0;
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    max-width: 100%;
+    height: auto;
+}
