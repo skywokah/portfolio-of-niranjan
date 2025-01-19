@@ -12,6 +12,7 @@ export default defineConfig({
         '@assets/about.png',
         '@assets/NiranjanKrishna_Web_Developer_Resume.pdf',
         '@assets/Projects/emotion.png',
+        'node:fs/promises',
         // Add other external assets as needed
       ],
     },
