@@ -4,15 +4,17 @@ import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
 import pdf from "/NiranjanKrishna_Web_Developer_Resume.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
+import { Worker, Viewer } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import { pdfjs } from 'pdfjs-dist';
 
-
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.worker.min.js`;
-
+import 'pdfjs-dist/build/pdf.worker.entry';
 
 function ResumeNew() {
   const [width, setWidth] = useState(window.innerWidth);
-  const [error, setError] = useState(null);
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -20,16 +22,11 @@ function ResumeNew() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const getScale = () => {
-    if (width > 786) return 1.5;
-    return 0.6; // Adjust scale for smaller screens
-  };
-
   return (
     <div>
       <Container fluid className="resume-section">
         <Particle />
-        <Row style={{ justifyContent: "center", position: "relative", margin: "20px 0" }}>
+        <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button
             variant="primary"
             href={pdf}
@@ -40,19 +37,10 @@ function ResumeNew() {
             &nbsp;Download CV
           </Button>
         </Row>
-        <Row className="resume" style={{ justifyContent: "center" }}>
-          <Document
-            file={pdf}
-            onLoadError={(error) => setError(error)}
-            loading={<div>Loading PDF...</div>}
-          >
-            <Page pageNumber={1} scale={getScale()} />
-          </Document>
-          {error && (
-            <div style={{ color: "red", textAlign: "center", marginTop: "20px" }}>
-              Error loading PDF: {error.message}
-            </div>
-          )}
+        <Row className="resume">
+          <Worker workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.1.392/pdf.worker.min.js`}>
+            <Viewer fileUrl={pdf} plugins={[defaultLayoutPluginInstance]} />
+          </Worker>
         </Row>
       </Container>
     </div>
@@ -60,4 +48,3 @@ function ResumeNew() {
 }
 
 export default ResumeNew;
-
